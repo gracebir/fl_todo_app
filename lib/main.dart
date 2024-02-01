@@ -1,4 +1,4 @@
-import 'package:fl_todo_app/page/todo_page.dart';
+import 'package:fl_todo_app/page/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,9 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TodoPage(),
+      home: const HomePage(),
+      theme: ThemeData(primarySwatch: Colors.yellow),
     );
   }
 }
