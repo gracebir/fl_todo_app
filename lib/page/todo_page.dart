@@ -8,11 +8,40 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
+  // editor control to get access to what user typed
+  String myGretting = "";
+  TextEditingController myController = TextEditingController();
+  void getUser() {
+    setState(() {
+      myGretting = "Hello, ${myController.text}";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: TextField(),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(myGretting),
+              TextField(
+                controller: myController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Type your name..."),
+              ),
+              ElevatedButton(
+                  onPressed: getUser,
+                  child: const Text(
+                    "Tap!",
+                    style: TextStyle(color: Colors.blue),
+                  ))
+            ],
+          ),
+        ),
       ),
     );
   }
